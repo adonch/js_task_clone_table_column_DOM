@@ -3,6 +3,10 @@
 const rows = document.querySelectorAll('table tr');
 
 for (const row of rows) {
+  const totalCells = row.cells.length;
+
+  const insertPosition = totalCells - 1;
+
   const isHeaderRow = row.querySelector('th') !== null;
 
   if (isHeaderRow) {
@@ -10,9 +14,9 @@ for (const row of rows) {
 
     newCell.textContent = row.cells[1].textContent;
 
-    row.insertBefore(newCell, row.cells[4]);
+    row.insertBefore(newCell, row.cells[insertPosition]);
   } else {
-    const newCell = row.insertCell(4);
+    const newCell = row.insertCell(insertPosition);
 
     newCell.textContent = row.cells[1].textContent;
   }
